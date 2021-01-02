@@ -1,0 +1,11 @@
+/* Your custom styles */
+
+.foto-principal{
+    background-image: url('../img/foto.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+
+}
