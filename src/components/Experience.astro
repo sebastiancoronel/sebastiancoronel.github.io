@@ -1,0 +1,43 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+const EXPERIENCIE = [
+  {
+    date: "Sep 2021 - May 2023",
+    title: "Software developer",
+    company: "AutoScraping Inc.",
+    description: `Developed & maintained web apps with Laravel, CodeIgniter, Django, and various JS frameworks. Created web crawlers using Python (Selenium, requests) for data extraction & visualization. Designed scalable data extraction strategies, developed Fintech platform, frontend for data visualization, documented, & engaged with customers.`,
+    //link: "",
+  },
+  {
+    date: "Mar 2021 - May 2023",
+    title: "Frontend Developer",
+    company: "IT department of the Government",
+    description: `Frontend Developer adept in JavaScript frameworks (jQuery, Ajax), Vue.js, Vuetify, Axios, and Cypress. Contributed to frontend development, product interface design, dashboard creation, payment integration, and documentation.`,
+  },
+  
+  {
+    date: "Nov 2019 - Dec 2022",
+    title: "Co-founder & Developer",
+    company: "IT department of the Government",
+    description: `Founded software factory with college peers. Served diverse clientele: restaurants, schools, gov't, insurance. Managed client comms, developed VueJS, jQuery, Laravel web apps. Coordinated projects, offered post-dev support.`,
+  },
+  {
+    date: "",
+    title: "Web Developer",
+    company: "UpWork",
+    description: `1525 hours worked on UpWork`,
+    link: "https://www.upwork.com/freelancers/~01204369a1dafa6cef"
+  },
+  
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCIE.map((experiencie) => (
+      <li class="">
+        <ExperienceItem {...experiencie} />
+      </li>
+    ))
+  }
+</ol>
