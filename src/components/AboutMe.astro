@@ -1,0 +1,38 @@
+---
+const personalImageAlt = "Sebastian Coronel";
+---
+
+<article
+  class="flex flex-col items-center justify-center gap-8 text-gray-700 dark:text-gray-300 md:flex-row"
+>
+  <div
+    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+  >
+    <p>
+      I am Sebastian, a Software Engineer with a proven track record in web
+      development and automation. From co-founding a software
+      factory during my college years to my current endeavors, I am dedicated to
+      delivering innovative solutions while meeting tight deadlines and
+      embracing continuous learning.
+    </p>
+
+    <p>
+      My expertise encompasses a broad range of technologies, including <strong> ReactJS,
+      NextJS, Supabase, Laravel, Django, and various JavaScript frameworks</strong>. I
+      excel in developing web applications and implementing efficient data
+      extraction strategies, <strong>leveraging Python and libraries like Selenium and
+        Requests.</strong> I have experience in client communication
+      and post-development support, ensuring projects align closely with
+      clients' needs and providing solutions.
+    </p>
+  </div>
+
+  <img
+    width="200"
+    height="200"
+    src="/profile-image.jpeg"
+    alt={personalImageAlt}
+    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-black/20 dark:bg-yellow-500/5 ring-1 ring-black/70 dark:ring-white/20"
+    style="object-position: 50% 50%"
+  />
+</article>
