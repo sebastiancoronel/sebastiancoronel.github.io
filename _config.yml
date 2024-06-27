@@ -1,0 +1,52 @@
+# Site settings
+title: "My Personal Blog"
+description: "A blog about technology and programming."
+baseurl: "" # the subpath of your site, e.g. /blog, leave empty if in root
+url: "https://myusername.github.io" # the base URL of your site
+
+# Author settings
+author:
+  name: "John Doe"
+  email: "johndoe@example.com"
+
+# Markdown and syntax highlighting settings
+markdown: kramdown
+highlighter: rouge
+
+# Theme
+theme: jekyll-theme-minimal
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Pagination
+paginate: 5
+paginate_path: "/page/:num/"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+
+# Include specific files
+include:
+  - _pages
+  - _posts
+
+# Custom variables
+custom_variable: "Your custom value"
+
+# Build settings
+future: true # publish posts with a future date
+lsi: false # use LSI for improved related posts
+whitelist: []
+gems: []
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Server settings
+port: 4000
+host: 0.0.0.0
