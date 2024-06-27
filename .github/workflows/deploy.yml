@@ -27,4 +27,6 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.ACTIONS_TOKEN }}
         # Configura este paso según sea necesario para el despliegue de GitHub Pages
