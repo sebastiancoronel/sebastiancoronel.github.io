@@ -22,6 +22,12 @@ const navItems = [
     label: "contact",
     url: "mailto:sebastiancoronel.a@gmail.com",
   },
+  {
+    title: "Blog",
+    label: "Blog",
+    url: "https://sebastiancoronel.beehiiv.com/",
+    target:'_blank'
+  },
 ]
 ---
 
@@ -37,6 +43,7 @@ const navItems = [
           class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
+          target={link.target}
         >
           {link.title}
         </a>
