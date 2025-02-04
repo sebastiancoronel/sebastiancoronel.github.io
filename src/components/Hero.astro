@@ -1,18 +1,13 @@
 ---
-const personalImageAlt = "Sebastian Coronel"
-import Badge from "@/components/Badge.astro"
-import LinkedInIcon from "@/components/icons/LinkedIn.astro"
-import MailIcon from "@/components/icons/Mail.astro"
-import SocialPill from "@/components/SocialPill.astro"
+const personalImageAlt = "Sebastian Coronel";
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/LinkedIn.astro";
+import MailIcon from "@/components/icons/Mail.astro";
+import SocialPill from "@/components/SocialPill.astro";
 ---
 
 <div class="max-w-xl">
   <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src="/profile-image.jpeg"
-      alt={personalImageAlt}
-    />
     <a
       href="https://www.linkedin.com/in/sebastian-alejandro-coronel"
       target="_blank"
@@ -30,9 +25,8 @@ import SocialPill from "@/components/SocialPill.astro"
   <p
     class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
   >
-    <strong
-      >Informatics Engineer and software developer</strong
-    > from Argentina. Specialized in the development of web applications and data manipulation.
+    <strong>Informatics Engineer and software developer</strong> from Argentina.
+    Specialized in the development of web applications and data manipulation.
   </p>
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:sebastiancoronel.a@gmail.com">
