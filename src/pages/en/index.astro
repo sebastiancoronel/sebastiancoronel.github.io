@@ -12,22 +12,22 @@ import CodeIcon from "@/components/icons/Code.astro";
 import ProfileCheck from "@/components/icons/ProfileCheck.astro";
 import BookIcon from "@/components/icons/Book.astro";
 
-import { cvEs } from "../data/cv";
+import { cvEn } from "../../data/cv";
 ---
 
 <Layout
-  title={`${cvEs.name} - ${cvEs.title}`}
-  description={`Curriculum Vitae de ${cvEs.name} - ${cvEs.title}`}
-  lang="es"
+  title={`${cvEn.name} - ${cvEn.title}`}
+  description={`Curriculum Vitae of ${cvEn.name} - ${cvEn.title}`}
+  lang="en"
 >
   <main class="px-4">
     <SectionContainer class="py-16 md:py-36">
       <Hero
-        name={cvEs.name}
-        title={cvEs.title}
-        address={cvEs.address}
-        contacts={cvEs.contacts}
-        availableLabel={cvEs.labels.availableForWork}
+        name={cvEn.name}
+        title={cvEn.title}
+        address={cvEn.address}
+        contacts={cvEn.contacts}
+        availableLabel={cvEn.labels.availableForWork}
       />
     </SectionContainer>
 
@@ -37,9 +37,9 @@ import { cvEs } from "../data/cv";
           class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
         >
           <ProfileCheck class="size-8" />
-          {cvEs.labels.aboutMe}
+          {cvEn.labels.aboutMe}
         </h2>
-        <AboutMe text={cvEs.aboutMe} />
+        <AboutMe text={cvEn.aboutMe} />
       </SectionContainer>
 
       <SectionContainer id="experiencia">
@@ -47,9 +47,9 @@ import { cvEs } from "../data/cv";
           class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
         >
           <Briefcase class="size-8" />
-          {cvEs.labels.experience}
+          {cvEn.labels.experience}
         </h2>
-        <Experience experience={cvEs.experience} />
+        <Experience experience={cvEn.experience} />
       </SectionContainer>
 
       <SectionContainer id="skills">
@@ -57,9 +57,9 @@ import { cvEs } from "../data/cv";
           class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
         >
           <CodeIcon class="size-7" />
-          {cvEs.labels.skills}
+          {cvEn.labels.skills}
         </h2>
-        <Skills skills={cvEs.skills} />
+        <Skills skills={cvEn.skills} />
       </SectionContainer>
 
       <SectionContainer id="educacion">
@@ -67,9 +67,9 @@ import { cvEs } from "../data/cv";
           class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
         >
           <BookIcon class="size-8" />
-          {cvEs.labels.education}
+          {cvEn.labels.education}
         </h2>
-        <Education education={cvEs.education} />
+        <Education education={cvEn.education} />
       </SectionContainer>
     </div>
   </main>

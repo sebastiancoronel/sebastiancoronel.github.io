@@ -1,41 +1,84 @@
 ---
-const personalImageAlt = "Sebastian Coronel";
 import Badge from "@/components/Badge.astro";
 import LinkedInIcon from "@/components/icons/LinkedIn.astro";
 import MailIcon from "@/components/icons/Mail.astro";
 import SocialPill from "@/components/SocialPill.astro";
+import type { Contact } from "../data/cv";
+
+interface Props {
+  name: string;
+  title: string;
+  address: string;
+  contacts: Contact[];
+  availableLabel: string;
+}
+
+const { name, title, address, contacts, availableLabel } = Astro.props;
 ---
 
-<div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
-    <a
-      href="https://www.linkedin.com/in/sebastian-alejandro-coronel"
-      target="_blank"
-      rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
+<div class="flex flex-col-reverse md:flex-row items-center justify-between gap-8 w-full mt-12 md:mt-20">
+  <div class="flex-1 max-w-2xl">
+    <div class="flex gap-4 mb-4">
+      <a
+        href="https://www.linkedin.com/in/sebastian-alejandro-coronel/"
+        target="_blank"
+        rel="noopener"
+        class="flex items-center transition md:hover:scale-105"
+      >
+        <Badge>{availableLabel}</Badge>
+      </a>
+    </div>
+    <h1
+      class="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-white"
     >
-      <Badge>Available for work</Badge>
-    </a>
+      {name}
+    </h1>
+    <h2 class="text-xl md:text-2xl font-semibold text-yellow-500 dark:text-yellow-400 mt-2">
+      {title}
+    </h2>
+    <div class="flex items-center gap-x-2 text-zinc-600 dark:text-zinc-400 mt-2 text-sm md:text-base font-medium">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="size-4 opacity-80"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2.5"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+        />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+        />
+      </svg>
+      <span>{address}</span>
+    </div>
+    <nav class="flex flex-wrap gap-4 mt-6">
+      {
+        contacts.map((contact) => {
+          const isEmail = contact.link.startsWith("mailto:");
+          const isLinkedIn = contact.link.includes("linkedin.com");
+          return (
+            <SocialPill href={contact.link}>
+              {isEmail && <MailIcon class="size-4" />}
+              {isLinkedIn && <LinkedInIcon class="size-4" />}
+              <span>{contact.text}</span>
+            </SocialPill>
+          );
+        })
+      }
+    </nav>
   </div>
-  <h1
-    class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-  >
-    Hey, I'm Sebastian
-  </h1>
-  <p
-    class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-yellow-200 [&>strong]:text-yellow-500 [&>strong]:font-semibold dark:text-gray-300"
-  >
-    <strong>Informatics Engineer and software developer</strong> from Argentina.
-    Specialized in the development of web applications and data manipulation.
-  </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
-    <SocialPill href="mailto:sebastiancoronel.a@gmail.com">
-      <MailIcon class="size-4" />
-      Contact me
-    </SocialPill>
-    <SocialPill href="https://www.linkedin.com/in/sebastian-alejandro-coronel">
-      <LinkedInIcon class="size-4" />
-      LinkedIn
-    </SocialPill>
-  </nav>
+  <div class="w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
+    <img
+      src="/profile-image.jpg"
+      alt={name}
+      class="object-cover w-full h-full rounded-3xl bg-zinc-200 dark:bg-zinc-800 shadow-md border border-zinc-200/50 dark:border-zinc-800/50"
+    />
+  </div>
 </div>

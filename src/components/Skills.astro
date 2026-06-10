@@ -1,0 +1,53 @@
+---
+import ReactIcon from "./icons/ReactJS.astro";
+import TailwindIcon from "./icons/Tailwind.astro";
+import LaravelIcon from "./icons/Laravel.astro";
+import type { SkillCategory } from "../data/cv";
+
+interface Props {
+  skills: SkillCategory[];
+}
+
+const { skills } = Astro.props;
+
+// Map skill names to icons if available
+const iconMap: Record<string, any> = {
+  React: ReactIcon,
+  Tailwind: TailwindIcon,
+  Laravel: LaravelIcon,
+};
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+  {
+    skills.map(({ title, description, items }) => (
+      <div class="p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/40 dark:bg-zinc-900/30 backdrop-blur-sm transition-all duration-300 hover:shadow-md hover:border-zinc-300 dark:hover:border-zinc-700/80 flex flex-col justify-between">
+        <div>
+          <h3 class="text-lg font-bold text-zinc-800 dark:text-zinc-200 border-b border-zinc-200/60 dark:border-zinc-800/60 pb-2">
+            {title}
+          </h3>
+          <p class="text-xs md:text-sm text-zinc-500 dark:text-zinc-400 mt-2.5 mb-4 leading-relaxed text-pretty">
+            {description}
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2.5 mt-auto">
+          {items.map((skill) => {
+            const Icon = iconMap[skill] || null;
+            return (
+              <div
+                class="flex items-center gap-x-2 px-3 py-1.5 text-sm font-medium rounded-xl 
+                bg-white/70 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80
+                text-zinc-800 dark:text-zinc-200 shadow-sm transition-all duration-300
+                hover:scale-105 hover:bg-yellow-50/50 dark:hover:bg-yellow-950/20 
+                hover:border-yellow-500/50 dark:hover:border-yellow-500/40 select-none"
+              >
+                {Icon && <Icon class="size-4" />}
+                <span>{skill}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    ))
+  }
+</div>

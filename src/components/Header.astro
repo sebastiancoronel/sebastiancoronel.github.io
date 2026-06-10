@@ -1,55 +1,80 @@
 ---
-import ThemeToggle from "./ThemeToggle.astro"
+import ThemeToggle from "./ThemeToggle.astro";
 
-const navItems = [
-  {
-    title: "Experience",
-    label: "experience",
-    url: "/#experiencia",
-  },
-  {
-    title: "Projects",
-    label: "projects",
-    url: "/#proyectos",
-  },
-  {
-    title: "About me",
-    label: "about-me",
-    url: "/#about-me",
-  },
-  {
-    title: "Contact",
-    label: "contact",
-    url: "mailto:sebastiancoronel.a@gmail.com",
-  },
-  {
-    title: "Blog",
-    label: "Blog",
-    url: "https://sebastiancoronel.beehiiv.com/",
-    target:'_blank'
-  },
-]
+const isEnglish = Astro.url.pathname.startsWith("/en");
+
+const navItems = isEnglish
+  ? [
+      {
+        title: "About me",
+        label: "sobre-mi",
+        url: "/en/#sobre-mi",
+      },
+      {
+        title: "Experience",
+        label: "experiencia",
+        url: "/en/#experiencia",
+      },
+      {
+        title: "Skills",
+        label: "skills",
+        url: "/en/#skills",
+      },
+      {
+        title: "Education",
+        label: "educacion",
+        url: "/en/#educacion",
+      },
+    ]
+  : [
+      {
+        title: "Sobre mí",
+        label: "sobre-mi",
+        url: "/#sobre-mi",
+      },
+      {
+        title: "Experiencia",
+        label: "experiencia",
+        url: "/#experiencia",
+      },
+      {
+        title: "Skills",
+        label: "skills",
+        url: "/#skills",
+      },
+      {
+        title: "Educación",
+        label: "educacion",
+        url: "/#educacion",
+      },
+    ];
 ---
 
 <header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2 px-4"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex px-4 py-1.5 text-sm font-medium rounded-full text-zinc-600 dark:text-zinc-200 justify-center items-center gap-x-1"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-yellow-500 dark:hover:text-yellow-400"
+          class="relative block px-2.5 py-1.5 transition hover:text-yellow-500 dark:hover:text-yellow-400"
           aria-label={link.label}
           href={link.url}
-          target={link.target}
         >
           {link.title}
         </a>
       ))
     }
     <ThemeToggle />
+    <a
+      href={isEnglish ? "/" : "/en"}
+      class="relative flex items-center justify-center font-bold text-xs bg-zinc-200/60 dark:bg-zinc-800/60 hover:bg-yellow-500/10 hover:text-yellow-500 border border-zinc-300 dark:border-zinc-700/60 px-2 py-1 rounded-full transition-all duration-300 ml-2"
+      aria-label="Change language"
+    >
+      {isEnglish ? "ES" : "EN"}
+    </a>
   </nav>
 </header>
 
@@ -104,7 +129,7 @@ const navItems = [
 
   @keyframes nav-shadown {
     to {
-      @apply shadow-lg ring-1 backdrop-blur dark:bg-gray-800/90 bg-white/50 ring-white/10;
+      @apply shadow-lg ring-1 backdrop-blur dark:bg-zinc-900/90 bg-white/70 ring-white/10;
     }
   }
 </style>
