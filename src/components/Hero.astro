@@ -16,7 +16,9 @@ interface Props {
 const { name, title, address, contacts, availableLabel } = Astro.props;
 ---
 
-<div class="flex flex-col-reverse md:flex-row items-center justify-between gap-8 w-full mt-12 md:mt-20">
+<div
+  class="flex flex-col-reverse md:flex-row items-center justify-between gap-8 w-full mt-12 md:mt-20"
+>
   <div class="flex-1 max-w-2xl">
     <div class="flex gap-4 mb-4">
       <a
@@ -33,10 +35,14 @@ const { name, title, address, contacts, availableLabel } = Astro.props;
     >
       {name}
     </h1>
-    <h2 class="text-xl md:text-2xl font-semibold text-yellow-500 dark:text-yellow-400 mt-2">
+    <h2
+      class="text-xl md:text-2xl font-semibold text-yellow-500 dark:text-yellow-400 mt-2"
+    >
       {title}
     </h2>
-    <div class="flex items-center gap-x-2 text-zinc-600 dark:text-zinc-400 mt-2 text-sm md:text-base font-medium">
+    <div
+      class="flex items-center gap-x-2 text-zinc-600 dark:text-zinc-400 mt-2 text-sm md:text-base font-medium"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="size-4 opacity-80"
@@ -49,12 +55,11 @@ const { name, title, address, contacts, availableLabel } = Astro.props;
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-        />
+        ></path>
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-        />
+          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
       </svg>
       <span>{address}</span>
     </div>
@@ -74,7 +79,7 @@ const { name, title, address, contacts, availableLabel } = Astro.props;
       }
     </nav>
   </div>
-  <div class="w-32 h-32 md:w-40 md:h-40 flex-shrink-0">
+  <div class="w-32 h-32 md:w-56 md:h-56 flex-shrink-0">
     <img
       src="/profile-image.jpg"
       alt={name}
