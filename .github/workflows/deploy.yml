@@ -13,6 +13,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Al ponerlo acá a nivel del job, afectamos a todos los pasos internos del action
+    env:
+      PNPM_FLAGS: "--only-built-dependencies=esbuild,sharp"
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
