@@ -18,11 +18,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
         uses: withastro/action@v2
-        env:
-          PNPM_CONFIG_ONLY_BUILT_DEPENDENCIES: "esbuild,sharp" # <-- Add this line
         with:
           path: . 
-          node-version: '22' # Side note: Node 22 is recommended over 26 (experimental)
+          node-version: '22'
           package-manager: pnpm@latest 
 
   deploy:
