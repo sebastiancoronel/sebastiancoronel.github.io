@@ -1,0 +1,39 @@
+---
+import type { MVPProcessStep } from "../data/mvp";
+
+interface Props {
+  title: string;
+  steps: MVPProcessStep[];
+}
+
+const { title, steps } = Astro.props;
+---
+
+<div class="w-full">
+  <h2
+    class="flex items-center justify-center mb-12 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+  >
+    {title}
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    {
+      steps.map((step) => (
+        <div
+          class="relative flex flex-col items-center text-center p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/40 dark:bg-zinc-900/30 backdrop-blur-sm transition-all duration-300 hover:shadow-md hover:border-zinc-300 dark:hover:border-zinc-700/80"
+        >
+          <span
+            class="flex items-center justify-center w-10 h-10 text-lg font-bold text-yellow-500 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-950/40 rounded-full mb-4"
+          >
+            {step.number}
+          </span>
+          <h3 class="text-lg font-bold text-zinc-800 dark:text-zinc-200 mb-2">
+            {step.title}
+          </h3>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            {step.description}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

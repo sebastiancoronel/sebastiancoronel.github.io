@@ -1,0 +1,118 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import GitHub from "@/components/icons/GitHub.astro";
+import LinkIcon from "@/components/icons/Link.astro";
+import { projectsEs, type Project } from "@/data/projects";
+
+export function getStaticPaths() {
+  return projectsEs.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<Layout
+  title={`${project.title} - Arquitectura y Detalles`}
+  description={project.shortDescription}
+  lang="es"
+>
+  <main class="px-4 py-16 md:py-24">
+    <SectionContainer class="max-w-4xl mx-auto">
+      {/* Botón de regreso */}
+      <a
+        href="/#portfolio"
+        class="inline-flex items-center gap-2 mb-8 text-sm font-medium text-yellow-600 dark:text-yellow-400 hover:underline"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Volver al portafolio
+      </a>
+
+      {/* Encabezado del Proyecto */}
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+        {project.title}
+      </h1>
+
+      <ul class="flex flex-wrap gap-2 mb-6">
+        {project.technologies.map((tech) => (
+          <li>
+            <span class="text-xs px-3 py-1 rounded-full font-medium bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200 border border-yellow-200 dark:border-yellow-700/50">
+              {tech}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        {project.fullDescription}
+      </p>
+
+      {/* Links a GitHub y Web */}
+      <div class="flex flex-wrap gap-4 mb-12">
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gray-800 hover:bg-gray-900 rounded-xl transition shadow-sm"
+          >
+            <GitHub class="size-5" />
+            Ver Código en GitHub
+          </a>
+        )}
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-yellow-600 hover:bg-yellow-500 rounded-xl transition shadow-sm"
+          >
+            <LinkIcon class="size-5" />
+            Ver Sitio Web Desplegado
+          </a>
+        )}
+      </div>
+
+      {/* Embed de Video de YouTube */}
+      {project.youtubeEmbedId && (
+        <section class="mb-14">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Explicación de Arquitectura y Funcionamiento
+          </h2>
+          <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700/60 bg-black">
+            <iframe
+              class="w-full h-full"
+              src={`https://www.youtube.com/embed/${project.youtubeEmbedId}`}
+              title={`Explicación de arquitectura de ${project.title}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; webshare"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </section>
+      )}
+
+      {/* Puntos destacados de Arquitectura */}
+      {project.architecturePoints && project.architecturePoints.length > 0 && (
+        <section class="p-8 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700/50">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            Highlights de Arquitectura
+          </h2>
+          <ul class="space-y-3 list-disc list-inside text-gray-700 dark:text-gray-300">
+            {project.architecturePoints.map((point) => (
+              <li class="leading-relaxed">{point}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </SectionContainer>
+  </main>
+</Layout>

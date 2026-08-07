@@ -1,0 +1,83 @@
+---
+import type { Project } from "@/data/projects";
+import GitHub from "./icons/GitHub.astro";
+import LinkIcon from "./icons/Link.astro";
+
+interface Props {
+  projects: Project[];
+  lang?: "es" | "en";
+}
+
+const { projects, lang = "es" } = Astro.props;
+
+const basePath = lang === "en" ? "/en/projects" : "/projects";
+const detailsLabel = lang === "en" ? "View Architecture & Video" : "Ver Arquitectura & Video";
+---
+
+<div class="grid grid-cols-1 gap-8">
+  {
+    projects.map((project) => (
+      <article class="flex flex-col space-x-0 space-y-4 group md:flex-row md:space-x-8 md:space-y-0 p-6 rounded-2xl bg-gray-100/50 dark:bg-gray-800/40 border border-gray-200 dark:border-gray-700/50 backdrop-blur-sm transition-all duration-300 hover:border-yellow-500/50">
+        <div class="w-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+              {project.title}
+            </h3>
+            
+            <ul class="flex flex-wrap gap-2 mb-4">
+              {project.technologies.map((tech) => (
+                <li>
+                  <span class="text-xs px-2.5 py-1 rounded-full font-medium bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-200 border border-yellow-200 dark:border-yellow-700/50">
+                    {tech}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+              {project.shortDescription}
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href={`${basePath}/${project.slug}`}
+              class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-yellow-600 hover:bg-yellow-500 rounded-xl transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            >
+              {detailsLabel}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-700 dark:text-gray-200 bg-gray-200/70 dark:bg-gray-700/60 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-xl transition"
+                aria-label="GitHub Repository"
+              >
+                <GitHub class="size-4" />
+                Code
+              </a>
+            )}
+
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-700 dark:text-gray-200 bg-gray-200/70 dark:bg-gray-700/60 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-xl transition"
+                aria-label="Live Website"
+              >
+                <LinkIcon class="size-4" />
+                Live Demo
+              </a>
+            )}
+          </div>
+        </div>
+      </article>
+    ))
+  }
+</div>

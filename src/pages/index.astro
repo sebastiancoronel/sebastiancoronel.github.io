@@ -6,6 +6,8 @@ import AboutMe from "@/components/AboutMe.astro";
 import Experience from "@/components/Experience.astro";
 import Skills from "@/components/Skills.astro";
 import Education from "@/components/Education.astro";
+import MVPCallToAction from "@/components/MVPCallToAction.astro";
+import Portfolio from "@/components/Portfolio.astro";
 
 import Briefcase from "@/components/icons/Briefcase.astro";
 import CodeIcon from "@/components/icons/Code.astro";
@@ -13,6 +15,7 @@ import ProfileCheck from "@/components/icons/ProfileCheck.astro";
 import BookIcon from "@/components/icons/Book.astro";
 
 import { cvEs } from "../data/cv";
+import { projectsEs } from "../data/projects";
 ---
 
 <Layout
@@ -70,6 +73,25 @@ import { cvEs } from "../data/cv";
           {cvEs.labels.education}
         </h2>
         <Education education={cvEs.education} />
+      </SectionContainer>
+
+      <!-- <SectionContainer>
+        <MVPCallToAction
+          title="Construyo tu MVP en 3 semanas"
+          subtitle="Transformo tu idea en un producto funcional listo para validar en el mercado"
+          ctaLabel="Ver más"
+          href="/mvp"
+        />
+      </SectionContainer> -->
+
+      <SectionContainer id="portfolio">
+        <h2
+          class="flex items-center mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+        >
+          <CodeIcon class="size-7" />
+          Portfolio
+        </h2>
+        <Portfolio projects={projectsEs} lang="es" />
       </SectionContainer>
     </div>
   </main>
