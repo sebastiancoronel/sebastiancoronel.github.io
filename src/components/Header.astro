@@ -25,11 +25,11 @@ const navItems = isEnglish
         label: "educacion",
         url: "/en/#educacion",
       },
-      {
-        title: "3-Week MVP",
-        label: "mvp",
-        url: "/en/mvp",
-      },
+      // {
+      //   title: "3-Week MVP",
+      //   label: "mvp",
+      //   url: "/en/mvp",
+      // },
       {
         title: "Portfolio",
         label: "portfolio",
@@ -57,11 +57,11 @@ const navItems = isEnglish
         label: "educacion",
         url: "/#educacion",
       },
-      {
-        title: "MVP 3 Semanas",
-        label: "mvp",
-        url: "/mvp",
-      },
+      // {
+      //   title: "MVP 3 Semanas",
+      //   label: "mvp",
+      //   url: "/mvp",
+      // },
       {
         title: "Portfolio",
         label: "portfolio",
@@ -100,44 +100,44 @@ const navItems = isEnglish
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
 
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500")
+              item.classList.add("text-yellow-500");
             } else {
-              item.classList.remove("text-yellow-500")
+              item.classList.remove("text-yellow-500");
             }
-          })
+          });
         }
-      })
-    }
+      });
+    };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
       rootMargin: "0px",
       threshold: 0.3,
-    })
+    });
 
     sections.forEach((section) => {
-      observer.observe(section)
-    })
+      observer.observe(section);
+    });
 
     // Cleanup function
     document.onvisibilitychange = () => {
       if (document.visibilityState === "hidden") {
-        observer.disconnect()
+        observer.disconnect();
       } else {
         sections.forEach((section) => {
-          observer.observe(section)
-        })
+          observer.observe(section);
+        });
       }
-    }
-  })
+    };
+  });
 </script>
 
 <style>
