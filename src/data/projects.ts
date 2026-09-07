@@ -57,6 +57,7 @@ export const projectsEs: Project[] = [
     ],
     githubUrl: "https://github.com/sebastiancoronel/rag-docs",
     liveUrl: "https://rag-docs.streamlit.app/",
+    youtubeEmbedId: "i8XakkTRaJc",
     architecturePoints: [
       "Pipeline RAG completo con LangChain: fragmentación semántica (1000 chars / overlap 200), embeddings via Gemini o OpenAI, y retriever top-5 por similitud vectorial.",
       "Aislamiento total de datos por sesión: cada usuario obtiene una colección ChromaDB única identificada por UUID, sin riesgo de contaminación entre visitantes.",
@@ -114,6 +115,7 @@ export const projectsEn: Project[] = [
     ],
     githubUrl: "https://github.com/sebastiancoronel/rag-docs",
     liveUrl: "https://rag-docs.streamlit.app/",
+    youtubeEmbedId: "i8XakkTRaJc",
     architecturePoints: [
       "Full RAG pipeline with LangChain: semantic chunking (1000 chars / 200 overlap), embeddings via Gemini or OpenAI, and top-5 similarity retriever.",
       "Complete per-session data isolation: each user gets a unique ChromaDB collection identified by UUID, with zero risk of cross-visitor data leakage.",
