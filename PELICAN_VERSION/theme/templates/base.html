@@ -1,6 +1,5 @@
 {% set lang = page.lang | default('en') %}
 {% set en = (lang == 'en') %}
-{% set home_prefix = '' if en else '/es' %}
 <!doctype html>
 <html lang="{{ lang }}">
 <head>
@@ -19,7 +18,6 @@
       {% block sidebar %}{% endblock %}
       <div class="main">
         <header class="topbar">
-          <a class="brand" href="{{ home_prefix }}/">{{ data.cv_for(lang)['name'] }}</a>
           <a class="lang" href="{{ data.switch_url(lang, page.url) }}">{{ 'ES' if en else 'EN' }}</a>
         </header>
 
