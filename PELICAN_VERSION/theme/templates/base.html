@@ -1,0 +1,39 @@
+{% set lang = page.lang | default('es') %}
+{% set en = (lang == 'en') %}
+{% set home_prefix = '/en' if en else '' %}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="generator" content="Pelican" />
+  {% block head_meta %}{% endblock %}
+  <title>{% block head_title %}{{ SITENAME }}{% endblock %}</title>
+  <link rel="icon" type="image/svg+xml" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/favicon.svg" />
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" />
+</head>
+<body>
+  <div class="container{% if self.sidebar() | trim %} has-sidebar{% endif %}">
+    <div class="layout">
+      {% block sidebar %}{% endblock %}
+      <div class="main">
+        <header class="topbar">
+          <a class="brand" href="{{ home_prefix }}/">{{ data.cv_for(lang)['name'] }}</a>
+          <a class="lang" href="{{ data.switch_url(lang, page.url) }}">{{ 'ES' if en else 'EN' }}</a>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <footer class="site-footer">
+          <p>
+            © {{ data.current_year() }} {{ data.cv_for(lang)['name'] }}
+            · {{ 'Website built with' if en else 'Web hecha con' }}
+            <a href="https://getpelican.com/" target="_blank" rel="noopener">Pelican</a>
+          </p>
+        </footer>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

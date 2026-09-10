@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% from "macros.html" import arrow_right, github, linkedin, mail, location, external %}
+
+{% set lang = page.lang | default('es') %}
+{% set en = (lang == 'en') %}
+{% set cv = data.cv_for(lang) %}
+{% set projects = data.projects_for(lang) %}
+{% set base_path = ('/en/projects' if en else '/projects') %}
+{% set home = ('/en' if en else '') %}
+{% set gh = data.github_url %}
+
+{% block head_meta %}
+  <meta name="description" content="{{ cv['name'] }} — {{ cv['title'] }}. {{ cv['about_me'] | truncate(150) }}" />
+{% endblock %}
+{% block head_title %}{{ cv['name'] }} — {{ cv['title'] }}{% endblock %}
+
+{% block sidebar %}
+<aside class="sidebar">
+  <nav class="side-nav" aria-label="{{ 'Sections' if en else 'Secciones' }}">
+    <a href="#about">{{ cv['labels']['about_me'] }}</a>
+    <a href="#projects">{{ 'Projects' if en else 'Proyectos' }}</a>
+    <a href="#experience">{{ cv['labels']['experience'] }}</a>
+    <a href="#education">{{ cv['labels']['education'] }}</a>
+  </nav>
+</aside>
+{% endblock %}
+
+{% block content %}
+<main>
+  <!-- Hero / intro -->
+  <section class="hero" id="about">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{{ cv['address'] }}</p>
+        <h1 class="hero-name">{{ cv['name'] }}</h1>
+        <p class="hero-title">{{ cv['title'] }}</p>
+
+        <p class="text">{{ cv['about_me'] }}</p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:sebastiancoronel.work@gmail.com">{{ mail() }} {{ 'Email me' if en else 'Escríbeme' }}</a>
+          <a class="btn" href="https://www.linkedin.com/in/sebastian-alejandro-coronel/" target="_blank" rel="noopener">{{ linkedin() }} LinkedIn</a>
+          <a class="btn" href="{{ gh }}" target="_blank" rel="noopener">{{ github() }} GitHub</a>
+        </div>
+      </div>
+      <img class="avatar" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/profile-image.jpg" alt="{{ cv['name'] }}" />
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <h2 class="section-title">{{ 'Projects' if en else 'Proyectos' }}</h2>
+    <div class="projects">
+      {% for project in projects %}
+      <div class="project-row">
+        <div class="row-head">
+          <a class="project-name" href="{{ base_path }}/{{ project['slug'] }}/">{{ project['title'] }}{{ arrow_right('arrow') }}</a>
+        </div>
+        <p class="project-desc">{{ project['short_description'] }}</p>
+        <div class="chips">
+          {% for t in project['technologies'] %}<span class="chip">{{ t }}</span>{% endfor %}
+        </div>
+        <div class="project-links">
+          {% if project.get('github_url') %}<a href="{{ project['github_url'] }}" target="_blank" rel="noopener">{{ 'Code' if en else 'Código' }}</a>{% endif %}
+          {% if project.get('live_url') %}<a href="{{ project['live_url'] }}" target="_blank" rel="noopener">{{ 'Live' if en else 'Web' }}</a>{% endif %}
+          <a href="{{ base_path }}/{{ project['slug'] }}/">{{ 'Details' if en else 'Detalles' }} →</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Experience / timeline -->
+  <section class="section" id="experience">
+    <h2 class="section-title">{{ cv['labels']['experience'] }}</h2>
+    <div class="timeline">
+      {% for job in cv['experience'] %}
+      <div class="timeline-item">
+        <div class="tl-year">{{ job['date'] }}</div>
+        <div class="tl-body">
+          <span class="tl-role">{{ job['position'] }}</span>
+          {% if job.get('institution') %}<span class="tl-sub"> — {{ job['institution'] }}{% if job.get('location') %}, {{ job['location'] }}{% endif %}</span>{% endif %}
+          {% if job.get('technologies') %}<div class="tl-tech">{{ job['technologies'] | join(' · ') }}</div>{% endif %}
+          {% if job.get('description') %}
+          <div class="tl-desc">
+            <ul>
+              {% for d in job['description'] %}<li>{{ d }}</li>{% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <h2 class="section-title">{{ cv['labels']['education'] }}</h2>
+    {% for edu in cv['education'] %}
+    <div class="edu">
+      <span class="edu-major">
+        {% if edu.get('link') %}<a href="{{ edu['link'] }}" target="_blank" rel="noopener">{{ edu['major'] }}{{ external() }}</a>{% else %}{{ edu['major'] }}{% endif %}
+      </span>
+      <span class="edu-school">{{ edu['institution'] }}</span>
+      <span class="edu-meta">{{ edu['date'] }}{% if edu.get('location') %} · {{ edu['location'] }}{% endif %}</span>
+    </div>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}

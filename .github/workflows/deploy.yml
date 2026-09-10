@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Pelican to GitHub Pages
 
 on:
   push:
@@ -10,21 +10,32 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Al ponerlo acá a nivel del job, afectamos a todos los pasos internos del action
-    env:
-      PNPM_FLAGS: "--only-built-dependencies=esbuild,sharp"
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v2
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          path: . 
-          node-version: '22'
-          package-manager: pnpm@latest 
+          python-version: '3.12'
+      - name: Install dependencies
+        working-directory: PELICAN_VERSION
+        run: pip install -r requirements.txt
+      - name: Build site
+        working-directory: PELICAN_VERSION
+        run: pelican content -s publishconf.py
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: PELICAN_VERSION/output
 
   deploy:
     needs: build

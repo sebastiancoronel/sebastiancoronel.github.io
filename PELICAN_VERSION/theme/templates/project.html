@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% from "macros.html" import arrow_left, github, external %}
+
+{% set lang = page.lang | default('es') %}
+{% set en = (lang == 'en') %}
+{% set home = ('/en' if en else '') %}
+{% set github_url = page.metadata.get('github_url') %}
+{% set live_url = page.metadata.get('live_url') %}
+{% set youtube = page.metadata.get('youtube') %}
+{% set tech_raw = page.metadata.get('technologies') or '' %}
+{% set techs = tech_raw.split(' · ') if tech_raw else [] %}
+
+{% block head_meta %}
+  {% if page.summary %}<meta name="description" content="{{ page.summary | striptags }}" />{% endif %}
+{% endblock %}
+{% block head_title %}{{ page.title }} — {{ 'Architecture & Details' if en else 'Arquitectura y Detalles' }}{% endblock %}
+
+{% block content %}
+<main>
+  <a class="back" href="{{ home }}/#projects">{{ arrow_left() }} {{ 'Back' if en else 'Volver' }}</a>
+  <h1 class="hero-name">{{ page.title }}</h1>
+
+  {% if page.summary %}<p class="text">{{ page.summary }}</p>{% endif %}
+
+  {% if techs %}
+  <div class="chips">
+    {% for t in techs %}<span class="chip">{{ t }}</span>{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="actions">
+    {% if github_url %}
+    <a class="btn" href="{{ github_url }}" target="_blank" rel="noopener">{{ github() }} {{ 'Code' if en else 'Código' }}</a>
+    {% endif %}
+    {% if live_url %}
+    <a class="btn btn-primary" href="{{ live_url }}" target="_blank" rel="noopener">{{ 'Live' if en else 'Ver web' }}</a>
+    {% endif %}
+  </div>
+
+  {% if youtube %}
+  <figure class="video">
+    <iframe src="https://www.youtube.com/embed/{{ youtube }}" title="{{ page.title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </figure>
+  {% endif %}
+
+  <div class="prose">{{ page.content }}</div>
+</main>
+{% endblock %}

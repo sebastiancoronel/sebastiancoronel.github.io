@@ -1,0 +1,6 @@
+.venv/
+node_modules/
+output/
+__pycache__/
+*.pyc
+theme/static/css/main.css
