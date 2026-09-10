@@ -11,7 +11,7 @@ SITENAME = "Sebastian Coronel"
 SITEURL = ""
 
 TIMEZONE = "America/Argentina/Buenos_Aires"
-DEFAULT_LANG = "es"
+DEFAULT_LANG = "en"
 
 # Where content lives
 PATH = "content"

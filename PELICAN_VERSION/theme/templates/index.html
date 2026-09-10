@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% from "macros.html" import arrow_right, github, linkedin, mail, location, external %}
 
-{% set lang = page.lang | default('es') %}
+{% set lang = page.lang | default('en') %}
 {% set en = (lang == 'en') %}
 {% set cv = data.cv_for(lang) %}
 {% set projects = data.projects_for(lang) %}
-{% set base_path = ('/en/projects' if en else '/projects') %}
-{% set home = ('/en' if en else '') %}
+{% set base_path = ('/projects' if en else '/es/projects') %}
+{% set home = ('' if en else '/es') %}
 {% set gh = data.github_url %}
 
 {% block head_meta %}

@@ -1,6 +1,6 @@
-{% set lang = page.lang | default('es') %}
+{% set lang = page.lang | default('en') %}
 {% set en = (lang == 'en') %}
-{% set home_prefix = '/en' if en else '' %}
+{% set home_prefix = '' if en else '/es' %}
 <!doctype html>
 <html lang="{{ lang }}">
 <head>

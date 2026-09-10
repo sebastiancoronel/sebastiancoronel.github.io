@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://sebastiancoronel.github.io/</loc></url>
-  <url><loc>https://sebastiancoronel.github.io/en/</loc></url>
+  <url><loc>https://sebastiancoronel.github.io/es/</loc></url>
   <url><loc>https://sebastiancoronel.github.io/projects/meriendapp/</loc></url>
   <url><loc>https://sebastiancoronel.github.io/projects/rag-docs/</loc></url>
-  <url><loc>https://sebastiancoronel.github.io/en/projects/meriendapp/</loc></url>
-  <url><loc>https://sebastiancoronel.github.io/en/projects/rag-docs/</loc></url>
+  <url><loc>https://sebastiancoronel.github.io/es/projects/meriendapp/</loc></url>
+  <url><loc>https://sebastiancoronel.github.io/es/projects/rag-docs/</loc></url>
 </urlset>

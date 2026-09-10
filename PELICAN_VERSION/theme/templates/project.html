@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% from "macros.html" import arrow_left, github, external %}
 
-{% set lang = page.lang | default('es') %}
+{% set lang = page.lang | default('en') %}
 {% set en = (lang == 'en') %}
-{% set home = ('/en' if en else '') %}
+{% set home = ('' if en else '/es') %}
 {% set github_url = page.metadata.get('github_url') %}
 {% set live_url = page.metadata.get('live_url') %}
 {% set youtube = page.metadata.get('youtube') %}

@@ -809,16 +809,22 @@ def mvp_for(lang):
 
 
 def switch_url(lang, url):
-    """Return the URL of the same page in the other language."""
+    """Return the URL of the same page in the other language.
+
+    English lives at the site root and Spanish under /es.
+    """
     url = url or "/"
     if not url.startswith("/"):
         url = "/" + url
     if lang == "en":
-        return url[3:] if url.startswith("/en") else url
-    # Spanish page -> English counterpart
-    if url.rstrip("/") == "":
-        return "/en/"
-    return "/en" + url
+        # English page -> Spanish counterpart under /es
+        return "/es" + url
+    # Spanish page -> English counterpart at the root
+    if url == "/es":
+        return "/"
+    if url.startswith("/es/"):
+        return url[3:]
+    return url
 
 
 def current_year():

@@ -3,7 +3,8 @@ Date: 2026-09-09
 Lang: en
 Slug: rag-docs-en
 Template: project
-Save_as: en/projects/rag-docs/index.html
+Save_as: projects/rag-docs/index.html
+Url: /projects/rag-docs/
 Summary: A Retrieval-Augmented Generation (RAG) web application to query your own documents (PDF, TXT or Markdown) with AI, citing the exact source of every answer. Deployed on Streamlit Community Cloud with abuse-prevention limits and per-session isolation.
 Github_url: https://github.com/sebastiancoronel/rag-docs
 Live_url: https://rag-docs.streamlit.app/

@@ -3,7 +3,8 @@ Date: 2026-09-09
 Lang: es
 Slug: meriendapp-es
 Template: project
-Save_as: projects/meriendapp/index.html
+Save_as: es/projects/meriendapp/index.html
+Url: /es/projects/meriendapp/
 Summary: Plataforma "offline-first" para el descubrimiento de personas similares a vos, sin swipe. Todos los días a las 11 AM, el algoritmo DFPL te presenta una persona nueva según tu perfil para chatear por tiempo limitado.
 Github_url: https://github.com/sebastiancoronel
 Live_url: https://meriendapp.com
