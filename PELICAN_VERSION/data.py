@@ -126,7 +126,7 @@ cv_es = {
             "major": "Ingeniería en Informática",
             "date": "2021",
             "location": "Argentina",
-            "link": "https://registrograduados.siu.edu.ar/consulta.php?ah=st6a29ae19a13282.27458775",
+            "link": "https://registrograduados.siu.edu.ar/consulta.php?ah=st6aaaefd4d73063.70830187&ai=registro_dngu%7C%7C92000001&tcm=popup&cGFyYW1ldHJv=eyJpZF90cmFtaXRlIjoiNjI2MTM1Iiwic2lzdGVtYSI6InNpZGNlciIsImlkX3RpcG9fZG9jdW1lbnRvIjoiRE5JIiwiZG9jdW1lbnRvIjoiMzgzNjUyMjkiLCJ0aXBvX3lfZG9jdW1lbnRvIjoiRG9jdW1lbnRvIE5hY2lvbmFsIGRlIElkZW50aWRhZCAzODM2NTIyOSIsImZlY2hhX2VncmVzbyI6IjIwMjEtMDQtMTkiLCJub21icmVfYXBlbGxpZG8iOiJDT1JPTkVMLCBTRUJBU1RJQU4gQUxFSkFORFJPIiwiYXBlbGxpZG8iOiJDT1JPTkVMIiwibm9tYnJlIjoiU0VCQVNUSUFOIEFMRUpBTkRSTyIsIm5hY2lvbmFsaWRhZCI6IkFSR0VOVElOQSIsImluc3RpdHVjaW9uIjoiVW5pdmVyc2lkYWQgQ2F0XHUwMGYzbGljYSBkZSBTYW50aWFnbyBkZWwgRXN0ZXJvIiwidGl0dWxvIjoiSW5nZW5pZXJvIGVuIEluZm9ybVx1MDBlMXRpY2EiLCJibG9ja2NoYWluIjoiYmxvY2tjaGFpbl9sb2dvX2NvbG9yLnBuZyJ9&tm=1",
         },
     ],
     "labels": {
@@ -269,7 +269,7 @@ cv_en = {
             "major": "Informatics Engineering",
             "date": "2021",
             "location": "Argentina",
-            "link": "https://registrograduados.siu.edu.ar/consulta.php?ah=st6a29ae19a13282.27458775",
+            "link": "https://registrograduados.siu.edu.ar/consulta.php?ah=st6aaaefd4d73063.70830187&ai=registro_dngu%7C%7C92000001&tcm=popup&cGFyYW1ldHJv=eyJpZF90cmFtaXRlIjoiNjI2MTM1Iiwic2lzdGVtYSI6InNpZGNlciIsImlkX3RpcG9fZG9jdW1lbnRvIjoiRE5JIiwiZG9jdW1lbnRvIjoiMzgzNjUyMjkiLCJ0aXBvX3lfZG9jdW1lbnRvIjoiRG9jdW1lbnRvIE5hY2lvbmFsIGRlIElkZW50aWRhZCAzODM2NTIyOSIsImZlY2hhX2VncmVzbyI6IjIwMjEtMDQtMTkiLCJub21icmVfYXBlbGxpZG8iOiJDT1JPTkVMLCBTRUJBU1RJQU4gQUxFSkFORFJPIiwiYXBlbGxpZG8iOiJDT1JPTkVMIiwibm9tYnJlIjoiU0VCQVNUSUFOIEFMRUpBTkRSTyIsIm5hY2lvbmFsaWRhZCI6IkFSR0VOVElOQSIsImluc3RpdHVjaW9uIjoiVW5pdmVyc2lkYWQgQ2F0XHUwMGYzbGljYSBkZSBTYW50aWFnbyBkZWwgRXN0ZXJvIiwidGl0dWxvIjoiSW5nZW5pZXJvIGVuIEluZm9ybVx1MDBlMXRpY2EiLCJibG9ja2NoYWluIjoiYmxvY2tjaGFpbl9sb2dvX2NvbG9yLnBuZyJ9&tm=1",
         },
     ],
     "labels": {
