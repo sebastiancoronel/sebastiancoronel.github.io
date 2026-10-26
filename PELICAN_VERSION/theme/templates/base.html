@@ -2,6 +2,8 @@
 {% set lang = (obj.lang if obj else none) or (lang if lang is defined else none) or 'en' %}
 {% set en = (lang == 'en') %}
 {% set current_url = (obj.url if obj else (output_file | replace('index.html', ''))) or '/' %}
+{% set home = '' if en else '/es' %}
+{% set cv = data.cv_for(lang) %}
 <!doctype html>
 <html lang="{{ lang }}">
 <head>
@@ -17,7 +19,17 @@
 <body>
   <div class="container{% if self.sidebar() | trim %} has-sidebar{% endif %}">
     <div class="layout">
-      {% block sidebar %}{% endblock %}
+      {% block sidebar %}
+      <aside class="sidebar">
+        <nav class="side-nav" aria-label="{{ 'Sections' if en else 'Secciones' }}">
+          <a href="{{ home }}/#about">{{ cv['labels']['about_me'] }}</a>
+          <a href="{{ home }}/#projects">{{ 'Portfolio' if en else 'Portafolio' }}</a>
+          <a href="{{ home }}/#experience">{{ cv['labels']['experience'] }}</a>
+          <a href="{{ home }}/#education">{{ cv['labels']['education'] }}</a>
+          <a href="{{ home }}/blog/">Blog</a>
+        </nav>
+      </aside>
+      {% endblock %}
       <div class="main">
         <header class="topbar">
           <a class="lang" href="{{ data.switch_url(lang, current_url) }}">{{ 'ES' if en else 'EN' }}</a>

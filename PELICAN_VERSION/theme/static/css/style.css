@@ -102,27 +102,42 @@ img {
 }
 
 /* ---------- sidebar nav ---------- */
+/* Mobile-first: horizontal scrollable chips */
 .sidebar {
-  display: none;
+  display: block;
+  margin-bottom: 1.25rem;
 }
 
 .side-nav {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  flex-direction: row;
+  gap: 0.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.side-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .side-nav a {
   color: var(--color-fg2);
-  font-size: 14px;
-  padding: 0.15rem 0;
-  transition: color 0.15s;
+  font-size: 13px;
+  white-space: nowrap;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px var(--color-line);
+  transition: color 0.15s, box-shadow 0.15s;
 }
 
 .side-nav a:hover {
   color: var(--color-fg1);
+  box-shadow: 0 0 0 1px var(--color-line-strong);
 }
 
+/* Desktop: vertical sticky column, plain links */
 @media (min-width: 64rem) {
   .has-sidebar .layout {
     display: grid;
@@ -135,6 +150,21 @@ img {
     position: sticky;
     top: 2.5rem;
     align-self: start;
+    margin-bottom: 0;
+  }
+
+  .side-nav {
+    flex-direction: column;
+    gap: 0.35rem;
+    overflow: visible;
+  }
+
+  .side-nav a {
+    font-size: 14px;
+    padding: 0.15rem 0;
+    border-radius: 0;
+    box-shadow: none;
+    white-space: normal;
   }
 }
 

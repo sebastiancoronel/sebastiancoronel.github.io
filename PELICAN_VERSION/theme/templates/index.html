@@ -14,18 +14,6 @@
 {% endblock %}
 {% block head_title %}{{ cv['name'] }} — {{ cv['title'] }}{% endblock %}
 
-{% block sidebar %}
-<aside class="sidebar">
-  <nav class="side-nav" aria-label="{{ 'Sections' if en else 'Secciones' }}">
-    <a href="#about">{{ cv['labels']['about_me'] }}</a>
-    <a href="#projects">{{ 'Portfolio' if en else 'Portafolio' }}</a>
-    <a href="#experience">{{ cv['labels']['experience'] }}</a>
-    <a href="#education">{{ cv['labels']['education'] }}</a>
-    <a href="{{ home }}/blog/">{{ 'Blog' }}</a>
-  </nav>
-</aside>
-{% endblock %}
-
 {% block content %}
 <main>
   <!-- Hero / intro -->
