@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block head_meta %}
+  <meta name="description" content="{{ category.name }} — Blog · {{ SITENAME }}" />
+{% endblock %}
+{% block head_title %}{{ category.name }} — Blog{% endblock %}
+
+{% block content %}
+{% set list_title = category.name %}
+{% set list_back_href = '/blog/' %}
+{% set list_back_label = 'Back to blog' %}
+{% include "blog_list.html" %}
+{% endblock %}

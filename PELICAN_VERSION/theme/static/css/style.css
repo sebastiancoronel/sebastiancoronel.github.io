@@ -575,3 +575,58 @@ img {
   aspect-ratio: 16 / 9;
   border: 0;
 }
+
+/* ---------- blog post list ---------- */
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.post {
+  display: block;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  transition: background-color 0.15s;
+}
+
+.post:hover {
+  background: var(--color-raised);
+}
+
+.post-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.post-title {
+  font-weight: 450;
+  color: var(--color-fg1);
+  text-decoration: underline;
+  text-decoration-color: var(--color-underline);
+  text-underline-offset: 3px;
+}
+
+.post-title .arrow {
+  display: inline-block;
+  margin-left: 0.15rem;
+  opacity: 0.8;
+}
+
+.post:hover .post-title {
+  text-decoration-color: var(--color-fg2);
+}
+
+.post-date {
+  color: var(--color-fg3);
+  font-size: 14px;
+}
+
+.post-desc {
+  color: var(--color-fg2);
+  text-wrap: pretty;
+  font-size: 15px;
+  margin-top: 0.25rem;
+}

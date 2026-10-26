@@ -16,13 +16,25 @@ DEFAULT_LANG = "en"
 # Where content lives
 PATH = "content"
 PAGE_PATHS = ["pages"]
+ARTICLE_PATHS = ["articles"]
 THEME = "theme"
 OUTPUT_PATH = "output"
 
-# We control URLs entirely via per-page `save_as`, so disable Pelican defaults.
-DIRECT_TEMPLATES = []
+# We control URLs entirely via per-page `save_as`, so disable Pelican defaults,
+# except for the blog index pages (one direct template per language).
+DIRECT_TEMPLATES = ["blog", "blog_es"]
 PAGE_URL = "{slug}/"
 PAGE_SAVE_AS = "{slug}.html"
+
+# Blog index pages: English at the root, Spanish under /es.
+BLOG_URL = "/blog/"
+BLOG_SAVE_AS = "blog/index.html"
+BLOG_ES_URL = "/es/blog/"
+BLOG_ES_SAVE_AS = "es/blog/index.html"
+
+# Category landing pages live under the blog (e.g. /blog/pose-correction-series/).
+CATEGORY_URL = "/blog/{slug}/"
+CATEGORY_SAVE_AS = "blog/{slug}/index.html"
 
 # Do not generate any feeds for this portfolio.
 FEED_ALL_ATOM = None
@@ -30,6 +42,10 @@ CATEGORY_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 TRANSLATION_FEED_ATOM = None
+
+# Articles inherit AUTHOR as their author; we don't publish author pages.
+AUTHOR_SAVE_AS = ""
+AUTHOR_URL = ""
 
 # Content / output behaviour
 DELETE_OUTPUT_DIRECTORY = True

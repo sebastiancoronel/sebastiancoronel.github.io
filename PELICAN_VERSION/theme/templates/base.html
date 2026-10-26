@@ -1,5 +1,7 @@
-{% set lang = page.lang | default('en') %}
+{% set obj = page if page is defined else (article if article is defined else none) %}
+{% set lang = (obj.lang if obj else none) or (lang if lang is defined else none) or 'en' %}
 {% set en = (lang == 'en') %}
+{% set current_url = (obj.url if obj else (output_file | replace('index.html', ''))) or '/' %}
 <!doctype html>
 <html lang="{{ lang }}">
 <head>
@@ -18,7 +20,7 @@
       {% block sidebar %}{% endblock %}
       <div class="main">
         <header class="topbar">
-          <a class="lang" href="{{ data.switch_url(lang, page.url) }}">{{ 'ES' if en else 'EN' }}</a>
+          <a class="lang" href="{{ data.switch_url(lang, current_url) }}">{{ 'ES' if en else 'EN' }}</a>
         </header>
 
         {% block content %}{% endblock %}

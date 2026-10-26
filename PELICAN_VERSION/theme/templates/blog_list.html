@@ -1,0 +1,36 @@
+{% from "macros.html" import arrow_left, arrow_right %}
+
+{% set post_lang = lang | default('en') %}
+{% set en = (post_lang == 'en') %}
+{% set home = ('' if en else '/es') %}
+{% set posts = articles | selectattr('lang', 'equalto', post_lang) | sort(attribute='date', reverse=true) | list %}
+{% set title = list_title | default('Blog') %}
+{% set back = list_back_href | default(home ~ '/') %}
+{% set back_label = list_back_label | default('Home' if en else 'Inicio') %}
+{% set cat_names = posts | map(attribute='category.name') | unique | list %}
+
+<main>
+  <a class="back" href="{{ back }}">{{ arrow_left() }} {{ back_label }}</a>
+  <h1 class="hero-name">{{ title }}</h1>
+
+  {% if posts %}
+    {% for cat_name in cat_names %}
+    <section class="section">
+      {% if cat_name != title %}<h2 class="section-title">{{ cat_name }}</h2>{% endif %}
+      <div class="posts">
+        {% for post in posts if post.category.name == cat_name %}
+        <article class="post">
+          <div class="post-head">
+            <a class="post-title" href="{{ SITEURL }}{{ post.url if post.url.startswith('/') else '/' ~ post.url }}">{{ post.title }}{{ arrow_right('arrow') }}</a>
+            <span class="post-date">{{ post.date.strftime('%b %d, %Y') if en else post.date.strftime('%d/%m/%Y') }}</span>
+          </div>
+          <div class="post-desc">{{ post.summary }}</div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  {% else %}
+    <p class="text">{{ 'No posts published yet.' if en else 'Aún no hay entradas publicadas.' }}</p>
+  {% endif %}
+</main>

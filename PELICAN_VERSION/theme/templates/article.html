@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "macros.html" import arrow_left %}
+
+{% set lang = article.lang | default('en') %}
+{% set en = (lang == 'en') %}
+{% set home = ('' if en else '/es') %}
+{% set youtube = article.metadata.get('youtube') %}
+{% set post_date = article.date.strftime('%b %d, %Y') if en else article.date.strftime('%d/%m/%Y') %}
+
+{% block head_meta %}
+  {% if article.summary %}<meta name="description" content="{{ article.summary | striptags }}" />{% endif %}
+{% endblock %}
+{% block head_title %}{{ article.title }} — Blog{% endblock %}
+
+{% block content %}
+<main>
+  <a class="back" href="{{ home }}/blog/">{{ arrow_left() }} {{ 'Back to blog' if en else 'Volver al blog' }}</a>
+
+  <p class="eyebrow">{{ article.category.name }} · {{ post_date }}</p>
+  <h1 class="hero-name">{{ article.title }}</h1>
+
+  <div class="prose">{{ article.content }}</div>
+
+  {% if youtube %}
+  <figure class="video">
+    <iframe src="https://www.youtube.com/embed/{{ youtube }}" title="{{ article.title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </figure>
+  {% endif %}
+</main>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import arrow_right, github, linkedin, mail, location, external %}
 
-{% set lang = page.lang | default('en') %}
+{% set lang = (page.lang if page is defined else none) | default('en') %}
 {% set en = (lang == 'en') %}
 {% set cv = data.cv_for(lang) %}
 {% set projects = data.projects_for(lang) %}
@@ -21,6 +21,7 @@
     <a href="#projects">{{ 'Portfolio' if en else 'Portafolio' }}</a>
     <a href="#experience">{{ cv['labels']['experience'] }}</a>
     <a href="#education">{{ cv['labels']['education'] }}</a>
+    <a href="{{ home }}/blog/">{{ 'Blog' }}</a>
   </nav>
 </aside>
 {% endblock %}

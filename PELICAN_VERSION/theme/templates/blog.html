@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block head_meta %}
+  <meta name="description" content="Blog — {{ SITENAME }}. Notes, series and articles." />
+{% endblock %}
+{% block head_title %}Blog — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+{% include "blog_list.html" %}
+{% endblock %}

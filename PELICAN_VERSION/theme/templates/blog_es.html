@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% set lang = 'es' %}
+
+{% block head_meta %}
+  <meta name="description" content="Blog — {{ SITENAME }}. Notas, series y artículos." />
+{% endblock %}
+{% block head_title %}Blog — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+{% include "blog_list.html" %}
+{% endblock %}
