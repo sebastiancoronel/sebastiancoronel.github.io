@@ -111,15 +111,8 @@ img {
 .side-nav {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.side-nav::-webkit-scrollbar {
-  display: none;
 }
 
 .side-nav a {
@@ -156,7 +149,6 @@ img {
   .side-nav {
     flex-direction: column;
     gap: 0.35rem;
-    overflow: visible;
   }
 
   .side-nav a {
