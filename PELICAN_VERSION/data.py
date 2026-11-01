@@ -36,7 +36,7 @@ cv_es = {
             "position": "Full-Stack Engineer",
             "institution": "Syon Creative Limited",
             "location": "London - Remote",
-            "date": "2024 - Presente",
+            "date": "2024 - 2026",
             "technologies": ["React", "Vue", "Laravel"],
             "description": [
                 "Desarrollé dashboards B2B utilizados por equipos internos, entregando "
@@ -168,7 +168,7 @@ cv_en = {
             "position": "Full-Stack Engineer",
             "institution": "Syon Creative Limited",
             "location": "London - Remote",
-            "date": "2024 - Present",
+            "date": "2024 - 2026",
             "technologies": ["React", "Vue", "Laravel"],
             "description": [
                 "Developed B2B dashboards used by internal teams, delivering client-specific "
