@@ -231,6 +231,28 @@ img {
   }
 }
 
+.post-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 14px;
+  color: var(--color-fg3);
+  transition: color 0.15s;
+}
+
+.post-author:hover {
+  color: var(--color-fg1);
+}
+
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--color-line);
+}
+
 .hero-name {
   font-weight: 500;
   letter-spacing: -0.01em;
